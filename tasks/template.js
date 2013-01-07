@@ -13,7 +13,6 @@ module.exports = function(grunt) {
 		var name = 'TEMPLATES';
 		
 		for( item in src ) {
-			grunt.log.writeln(src[item]);
 			obj = deepmerge(obj, JSON.parse(src[item]));
 		}
 		
@@ -21,6 +20,8 @@ module.exports = function(grunt) {
 			name = this.data.variables.name
 		
 		grunt.file.write(this.file.dest, 'var '+ name +' = ' + JSON.stringify(obj) + ';');
+
+		grunt.log.ok(this.file.dest, name);
 	});
 
 	// ==========================================================================
@@ -70,7 +71,7 @@ module.exports = function(grunt) {
 				res += '"' + node + '":' + buildJsonPath(path, filepath) + '}'
 			}
 			else if( path.length == 0 ) {
-				res += '"' + node[0].match(/(.*)\.[^.]+$/)[1] + '":"' + grunt.task.directive(filepath, grunt.file.read).replace(/ /g,"").replace(/\n/g," ").replace(/"/g,'\\"').replace(/'/g,'\\"') + '"}'
+				res += '"' + node[0].match(/(.*)\.[^.]+$/)[1] + '":"' + grunt.task.directive(filepath, grunt.file.read).replace(/\n/g," ").replace(/\t/g," ").replace(/"/g,'\\"').replace(/'/g,'\\"') + '"}'
 			}
 			return res;
 		}
