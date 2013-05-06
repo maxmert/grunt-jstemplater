@@ -15,7 +15,6 @@ module.exports = function(grunt) {
 		var name = 'TEMPLATES';
 		
 		for( item in src ) {
-			grunt.log.writeln(src[item]);
 			obj = deepmerge(obj, JSON.parse(src[item]));
 		}
 		
@@ -23,6 +22,8 @@ module.exports = function(grunt) {
 			name = this.data.variables.name
 		
 		grunt.file.write(this.file.dest, 'var '+ name +' = ' + JSON.stringify(obj) + ';');
+
+		grunt.log.ok(this.file.dest, name);
 	});
 
 	// ==========================================================================
