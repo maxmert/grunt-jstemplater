@@ -2,5 +2,7 @@
 *.swp
 .lvimrc
 /node_modules/
+node_modules
+node_modules/*
 test/fixtures/output
 npm-debug.log
