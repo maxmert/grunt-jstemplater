@@ -1,7 +1,7 @@
 {
   "name": "grunt-jstemplater",
   "description": "Compiler for javascript templates (for example, mustache) task for Grunt.",
-  "version": "0.1.2",
+  "version": "0.1.6",
   "homepage": "https://github.com/maxmert/grunt-jstemplater",
   "author": {
     "name": "Vetrenko Maxim",
@@ -27,6 +27,7 @@
     "node": ">=0.4.11"
   },
   "dependencies": {
-    "grunt": ">=0.3.7"
+    "grunt": ">=0.4.0",
+    "grunt-lib-legacyhelpers": "~0.1.1"
   }
 }

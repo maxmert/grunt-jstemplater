@@ -1,5 +1,7 @@
 module.exports = function(grunt) {
 
+	var helpers = require('grunt-lib-legacyhelpers').init(grunt);
+	
 	// ==========================================================================
 	// TASKS
 	// ==========================================================================
@@ -27,7 +29,7 @@ module.exports = function(grunt) {
 	// HELPERS
 	// ==========================================================================
 
-		grunt.registerHelper('template', function(files, staticPath) {
+		helpers.name('template', function(files, staticPath) {
 			return files ? files.map(function(filepath){
 				paths = filepath.split(staticPath)[1].split('/')
 				jsonpart = buildJsonPath(paths, filepath);
@@ -70,7 +72,7 @@ module.exports = function(grunt) {
 				res += '"' + node + '":' + buildJsonPath(path, filepath) + '}'
 			}
 			else if( path.length == 0 ) {
-				res += '"' + node[0].match(/(.*)\.[^.]+$/)[1] + '":"' + grunt.task.directive(filepath, grunt.file.read).replace(/ /g,"").replace(/\n/g," ").replace(/"/g,'\\"').replace(/'/g,'\\"') + '"}'
+				res += '"' + node[0].match(/(.*)\.[^.]+$/)[1] + '":"' + grunt.task.directive(filepath, grunt.file.read).replace(/\t/g,"").replace(/ /g,"").replace(/\n/g," ").replace(/"/g,'\\"').replace(/'/g,'\\"') + '"}'
 			}
 			return res;
 		}
