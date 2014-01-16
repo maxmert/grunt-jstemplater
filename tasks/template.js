@@ -1,6 +1,5 @@
 module.exports = function(grunt) {
 
-
 	// ==========================================================================
 	// HELPERS
 	// ==========================================================================
@@ -67,6 +66,9 @@ module.exports = function(grunt) {
 		var name = 'TEMPLATES';
 		
 		for( item in src ) {
+			src[item] = src[item].replace(/(\r\n|\n|\r|\t)/gm,"");
+			src[item] = src[item].replace(/>[\s]+</gm,"><");
+			src[item] = src[item].replace(/[\s]{2,}/gm,"");
 			obj = deepmerge(obj, JSON.parse(src[item]));
 		}
 		
