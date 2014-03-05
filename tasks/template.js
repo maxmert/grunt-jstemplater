@@ -47,7 +47,7 @@ module.exports = function(grunt) {
 				res += '"' + node + '":' + buildJsonPath(path, filepath) + '}'
 			}
 			else if( path.length == 0 ) {
-				res += '"' + node[0].match(/(.*)\.[^.]+$/)[1] + '":"' + grunt.file.read(filepath).replace(/\t/g,"").replace(/\n/g," ").replace(/"/g,'\\"').replace(/'/g,'\\"') + '"}'
+				res += '"' + node[0].match(/(.*)\.[^.]+$/)[1] + '":"' + grunt.file.read(filepath).replace(/\t/g,"").replace(/\n/g," ").replace(/"/g,'\\"') + '"}'
 			}
 			return res;
 		}
